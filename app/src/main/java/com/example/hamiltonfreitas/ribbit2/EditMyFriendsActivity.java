@@ -25,6 +25,7 @@ import java.util.List;
 
 public class EditMyFriendsActivity extends ListActivity{
     public static final String TAG = EditMyFriendsActivity.class.getSimpleName();
+
     protected List<ParseUser> mUsers;
     protected ParseRelation<ParseUser> mFriendsRelation;
     protected ParseUser mCurrentUser;
@@ -67,6 +68,8 @@ public class EditMyFriendsActivity extends ListActivity{
                             EditMyFriendsActivity.this, android.R.layout.simple_list_item_checked,
                             usernames);
                     setListAdapter(adapter);
+
+                    addFriendCheckmarks();
                 } else {
                     Log.e(TAG, e.getMessage());
                     AlertDialog.Builder builder = new AlertDialog.Builder(EditMyFriendsActivity.this);
@@ -111,24 +114,50 @@ public class EditMyFriendsActivity extends ListActivity{
         if(getListView().isItemChecked(position)){
             //Add friend
             mFriendsRelation.add(mUsers.get(position));
-            mCurrentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if(e!= null){
-                        Log.i(TAG, e.getMessage());
-                    }
-                }
-            });
+
         }else{
 
-        }
+            //Remove the friend
+            mFriendsRelation.remove(mUsers.get(position));
 
+        }
+        mCurrentUser.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e!= null){
+                    Log.i(TAG, e.getMessage());
+                }
+            }
+        });
 
 
     }
 
     private void setupActionBar(){
        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void addFriendCheckmarks(){
+        mFriendsRelation.getQuery().findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> friends, ParseException e) {
+                if (e== null){
+                    //list returned - look for a match
+                    for(int i =0; i < mUsers.size(); i++ ){
+                        ParseUser user = mUsers.get(i);
+
+                        for(ParseUser friend : friends){
+                            if (friend.getObjectId().equals(user.getObjectId())){
+                                getListView().setItemChecked(i, true);
+                            }
+                        }
+                    }
+
+                }else{
+                    Log.e(TAG, e.getMessage());
+                }
+            }
+        });
     }
 
 }

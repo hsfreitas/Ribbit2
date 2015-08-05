@@ -47,10 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TestingBlankFrag"
-            android:label="@string/title_activity_testing_blank_frag" >
-        </activity>
     </application>
 
 </manifest>

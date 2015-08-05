@@ -30,5 +30,14 @@
     <string name="title_activity_friend_edtion">FriendEdtion</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_change_friends">Change Friends</string>
+    <string name="title_activity_linkmy_edit_users">Linkmy EditUsers</string>
+    <string name="title_activity_rabuda">Rabuda</string>
+    <string name="menu_camera_label">Camera</string>
+    <string-array name="camera_choices">
+        <item>Take Picture</item>
+        <item>Take Video</item>
+        <item>Choose Picture</item>
+        <item>Choose Video</item>
+    </string-array>
 
 </resources>
