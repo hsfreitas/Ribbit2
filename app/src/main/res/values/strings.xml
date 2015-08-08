@@ -39,5 +39,18 @@
         <item>Choose Picture</item>
         <item>Choose Video</item>
     </string-array>
+    <string name="erro_external_storage">There was a problem accessing your device\'s external storage.</string>
+    <string name="general_error">"Sorry there was an error!"</string>
+    <string name="video_file_size_warning">The selected video must less than 10MB!</string>
+    <string name="error_opening_file">There was a problem with the selected file.</string>
+    <string name="error_file_size_too_large">Select file is too large! Select a new file</string>
+    <string name="title_activity_recipients">Choose Recipentes</string>
+    <string name="empty_recipient_str_msg">Choose some friends first</string>
+    <string name="title_activity_choose_friend">ChooseFriend</string>
+    <string name="action_send_label">Send</string>
+    <string name="error_selecting_file">There was an error with the file selected please select a different  file</string>
+    <string name="error_selecting_file_title">We are sorry!</string>
+    <string name="success_message">Message sent!</string>
+    <string name="error_sending_message">There was an error sending your message, please try again.</string>
 
 </resources>
